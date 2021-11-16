@@ -105,7 +105,7 @@ activeTab.addEventListener("click", function () {
      const tasks = document.createElement("div");
      const todoCheckBox = document.createElement("input");
      const item = document.createElement("li");
-     const todoDelete = document.createElement("button");
+
      
      item.textContent = task.value;
      todoCheckBox.type = "checkbox";
@@ -123,11 +123,10 @@ activeTab.addEventListener("click", function () {
 
      tasks.classList.add("todo");
   
-     todoDelete.classList.add("delete");
  
      tasks.appendChild(todoCheckBox);
      tasks.appendChild(item);
-     tasks.appendChild(todoDelete);
+
  
      activeList.appendChild(tasks);
     };
