@@ -12,18 +12,27 @@ const completedTab = document.querySelector("#completed-tab")
 let todo = [];
 
 activeButton.addEventListener("click", function(e){
+    if(activeInput.value != ""){
     todo.push({id: todo.length + 1, value: activeInput.value, Checked: false});
-        newTodo(activeInput.value);
+    newTodo(activeInput.value);
     activeInput.value = "";
     activeTab.click();
+
+    } else {
+        alert("Add todo details...")
+    }
+    
 })
 
 todoButton.addEventListener("click", function(e) {
+    if(todoInput.value != ""){
     todo.push({id: todo.length + 1, value: todoInput.value, Checked: false});
         newTodo(todoInput.value);
     
     todoInput.value = "";
-    
+    } else{
+        alert("Add todo details")
+    }
 });
 
 deleteCompletedButton.addEventListener("click", function () {
