@@ -178,3 +178,22 @@ font-weight: 700;
     color: #ffffff;
     pointer-events: none;
 }
+
+@media(max-width: 700px){
+    .nav{
+        width: 400px
+    }
+
+    .todo-input{
+        width: 300px;
+    }
+
+    .todo-button{
+        width: 80px;
+    }
+
+    .delete-all{
+        width: 100px;
+        left: 75%;
+    }
+}
