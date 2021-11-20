@@ -26,8 +26,8 @@ activeButton.addEventListener("click", function(e){
     
     } else {
         alert("Add todo details...")
-    }
-    
+    };
+    save();
 })
 
 todoButton.addEventListener("click", function(e) {
@@ -62,7 +62,6 @@ deleteCompletedButton.addEventListener("click", function () {
 completedTab.addEventListener("click", function (e) {
     completedList.innerHTML = "";
     for(const task of todo.filter((task) => task.Checked === true)){
-        console.log(todo);
 
         const tasks = document.createElement("div");
         const todoCheckBox = document.createElement("input");
@@ -114,6 +113,8 @@ completedTab.addEventListener("click", function (e) {
 });
 
 activeTab.addEventListener("click", function () {
+    console.log(todo);
+   
     activeList.innerHTML = "";
     for(const task of todo.filter((task) => task.Checked === false)){
 
@@ -130,7 +131,6 @@ activeTab.addEventListener("click", function () {
          if(todoCheckBox.checked){ 
             task.Checked = true;
             tasks.remove();
-            displayList();
             save();
          };
      });
@@ -143,10 +143,9 @@ activeTab.addEventListener("click", function () {
 
  
      activeList.appendChild(tasks);
-     save();
-    };
-});
-
+    }; 
+  
+})
     
 
 function newTodo (value) {
@@ -229,7 +228,6 @@ function displayList() {
 };
 
 function save() {
-    console.log(todo);
     let stringified = JSON.stringify(todo)
     localStorage.setItem("todoList", stringified);
 };
@@ -241,7 +239,6 @@ function load() {
     for(let i = 0; i < localStorageTodoList.length; i++){
        if(!todo.includes(localStorageTodoList[i])){
             todo.push(localStorageTodoList[i]);
-            console.log(todo);
        };
     };
 };
