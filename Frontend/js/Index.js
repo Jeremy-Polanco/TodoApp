@@ -8,14 +8,15 @@ const activeList = document.querySelector(".todo-list-active");
 const completedList = document.querySelector(".todo-completed-list");
 const deleteCompletedButton = document.querySelector(".delete-all");
 const activeTab = document.querySelector("#active-tab");
-const completedTab = document.querySelector("#completed-tab")
+const completedTab = document.querySelector("#completed-tab");
+const allTab = document.querySelector("#all-tab")
 let todo = [];
 
 window.onload = function() {
     load();
     displayList();
     
-}
+};
 
 activeButton.addEventListener("click", function(e){
     if(activeInput.value != ""){
@@ -36,7 +37,6 @@ todoButton.addEventListener("click", function(e) {
         newTodo(todoInput.value);
 
      save();
-     load();
 
     todoInput.value = "";
     } else{
@@ -113,7 +113,6 @@ completedTab.addEventListener("click", function (e) {
 });
 
 activeTab.addEventListener("click", function () {
-    console.log(todo);
    
     activeList.innerHTML = "";
     for(const task of todo.filter((task) => task.Checked === false)){
@@ -131,6 +130,7 @@ activeTab.addEventListener("click", function () {
          if(todoCheckBox.checked){ 
             task.Checked = true;
             tasks.remove();
+            displayList();
             save();
          };
      });
@@ -144,8 +144,8 @@ activeTab.addEventListener("click", function () {
  
      activeList.appendChild(tasks);
     }; 
-  
-})
+    save();
+});
     
 
 function newTodo (value) {
@@ -164,12 +164,12 @@ function newTodo (value) {
             todoCheckBox.checked = true; 
             item.style.textDecoration = "line-through";
             obj.Checked = true;
-            console.log(todo)
+ 
         }
         
         else{
             obj.Checked = false;
-            console.log(todo);
+
             todoCheckBox.checked = false;
             item.style.textDecoration = "none"
         };
