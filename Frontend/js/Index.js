@@ -54,7 +54,9 @@ deleteCompletedButton.addEventListener("click", function () {
             i--
         };
     };
-    completedList.innerHTML = "";   
+    completedList.innerHTML = "";
+    
+    save();
 });
 
 completedTab.addEventListener("click", function (e) {
