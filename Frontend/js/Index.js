@@ -11,13 +11,19 @@ const activeTab = document.querySelector("#active-tab");
 const completedTab = document.querySelector("#completed-tab")
 let todo = [];
 
+window.onload = function() {
+    load();
+    displayList();
+    
+}
+
 activeButton.addEventListener("click", function(e){
     if(activeInput.value != ""){
     todo.push({id: todo.length + 1, value: activeInput.value, Checked: false});
     newTodo(activeInput.value);
     activeInput.value = "";
     activeTab.click();
-
+    
     } else {
         alert("Add todo details...")
     }
@@ -28,7 +34,10 @@ todoButton.addEventListener("click", function(e) {
     if(todoInput.value != ""){
     todo.push({id: todo.length + 1, value: todoInput.value, Checked: false});
         newTodo(todoInput.value);
-    
+
+     save();
+     load();
+
     todoInput.value = "";
     } else{
         alert("Add todo details")
@@ -70,6 +79,8 @@ completedTab.addEventListener("click", function (e) {
                 tasks.remove();
                 task.Checked = false
                 displayList();
+
+                save();
             }
         });
 
@@ -81,6 +92,8 @@ completedTab.addEventListener("click", function (e) {
 
             todo.splice(todo.indexOf(task), 1);
             displayList();
+
+            save();
         });
     
    
@@ -95,7 +108,7 @@ completedTab.addEventListener("click", function (e) {
     
         completedList.appendChild(tasks);
        };
-    
+    save();
 });
 
 activeTab.addEventListener("click", function () {
@@ -113,11 +126,10 @@ activeTab.addEventListener("click", function () {
 
      todoCheckBox.addEventListener("click", function(e) {
          if(todoCheckBox.checked){ 
-            console.log(e.target.parentElement.textContent);
             task.Checked = true;
             tasks.remove();
             displayList();
-           
+            save();
          };
      });
 
@@ -129,6 +141,7 @@ activeTab.addEventListener("click", function () {
 
  
      activeList.appendChild(tasks);
+     save();
     };
 });
 
@@ -139,7 +152,6 @@ function newTodo (value) {
     const todoCheckBox = document.createElement("input");
     const item = document.createElement("li");;
     let obj =  todo.find((t) => t.value === value && t.id == todo.length);
-    console.log(obj)
 
     item.textContent = value;
     todoCheckBox.type = "checkbox";
@@ -175,7 +187,6 @@ function displayList() {
     todoList.innerHTML = "";
 
     for( const task of todo){
-        console.log(task)
 
         const tasks = document.createElement("div");
         const todoCheckBox = document.createElement("input");
@@ -196,11 +207,11 @@ function displayList() {
                 task.Checked = true;
                 todoCheckBox.checked = true; 
                 item.style.textDecoration = "line-through";
+                save();
             }
             
             else{
                 task.Checked = false;
-                console.log(todo);
                 todoCheckBox.checked = false;
                 item.style.textDecoration = "none"
             };
@@ -212,9 +223,29 @@ function displayList() {
         tasks.appendChild(item);
     
         todoList.appendChild(tasks);        
-    }
-    
-}
+    };
+};
+
+function save() {
+    console.log(todo);
+    let stringified = JSON.stringify(todo)
+    localStorage.setItem("todoList", stringified);
+};
+
+function load() {
+    let retrieveData = localStorage.getItem("todoList");
+    let localStorageTodoList = JSON.parse(retrieveData);
+
+    for(let i = 0; i < localStorageTodoList.length; i++){
+       if(!todo.includes(localStorageTodoList[i])){
+            todo.push(localStorageTodoList[i]);
+            console.log(todo);
+       };
+    };
+};
+
+
+
 
 //tabs 
 function setupTabs() {
