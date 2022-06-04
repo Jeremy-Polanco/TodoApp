@@ -75,7 +75,7 @@ activeInput.addEventListener("keypress", function (e) {
       newTodo(activeInput.value);
 
       save();
-
+      activeTab.click();
       activeInput.value = "";
     } else {
       alert("Add todo details");
@@ -204,7 +204,6 @@ function newTodo(value) {
   tasks.appendChild(todoCheckBox);
   tasks.appendChild(item);
 
-  activeList.appendChild(tasks);
   todoList.appendChild(tasks);
 }
 
