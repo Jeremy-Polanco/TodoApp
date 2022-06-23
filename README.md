@@ -12,11 +12,11 @@
       Demo
     </a>
     <span> | </span>
-    <a href="https://devchallenges.io/solutions/7NJm974d9PPMVbm94ZYU">
+    <a href="https://jeremy-polanco.github.io/TodoApp/">
       Solution
     </a>
     <span> | </span>
-    <a href="https://devchallenges.io/challenges/mM1UIenRhK808W8qmLWv">
+    <a href="https://devchallenges.io/challenges/hH6PbOHBdPm6otzw2De5">
       Challenge
     </a>
   </h3>
@@ -42,7 +42,7 @@
 Introduce your projects by taking a screenshot or a gif. Try to tell visitors a story about your project by answering:
 
 - Where can I see your demo?
-  You can find the demo at https://devchallenges.io/solutions/7NJm974d9PPMVbm94ZYU.
+  You can find the demo at https://jeremy-polanco.github.io/TodoApp/.
 - What was your experience?
   This project is wonderful to begin with web development I really learned while I was struggling to wrap my head in some concepts.
 - What have you learned/improved?
@@ -72,14 +72,13 @@ This application/site was created as a submission to a [DevChallenges](https://d
 
 <!-- Example: -->
 
-To clone and run this application, you'll need [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) also you will need to install [vite] and [react] modules installed on your computer. 
-You'll also need to enable cross-origin requests to anywhere requesting It from https://cors-anywhere.herokuapp.com/
+To clone and run this application, you'll need [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com))
 
 From your command line:
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/your-user-name/your-project-name
+$ git clone git@github.com:Jeremy-Polanco/TodoApp.git
 
 # Install dependencies
 $ npm install
